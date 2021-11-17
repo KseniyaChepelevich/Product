@@ -6,8 +6,8 @@ import ru.netology.domain.ProductRepository;
 import ru.netology.domain.Smartphone;
 
 public class ProductManager {
-    private ProductRepository repository;
-    private Product[] items = new Product[0];
+    private ProductRepository repository = new ProductRepository();
+    private Product[] products = new Product[0];
 
 
     public ProductManager(ProductRepository repository) { this.repository = repository;}
@@ -24,11 +24,11 @@ public class ProductManager {
     }
 
     public Product[] getAll() {
-        Product[] items = repository.findAll();
-        Product[] result = new Product[items.length];
+        Product[] products = repository.findAll();
+        Product[] result = new Product[products.length];
         for (int i =0; i < result.length; i++) {
-            int index = items.length - i - 1;
-            result[i] = items[index];
+            int index = products.length - i - 1;
+            result[i] = products[index];
         }
 
         return result;
