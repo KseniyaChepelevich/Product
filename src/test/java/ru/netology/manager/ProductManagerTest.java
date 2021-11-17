@@ -15,6 +15,7 @@ class ProductManagerTest {
     private Book coreJava2 = new Book(1, "Cora Java2", 566, "Гари Корнелл");
     private Book java3 = new Book(3, "Java3", 750, "Jason");
     private Book java5 = new Book(4, "Java5", 750, "Jason");
+    private Book many = new Book(5, "Many", 350, "Ivanov");
 
     //private Smartphone Samsung = new Smartphone(7, "Galaxy S21", 55150, "Samsung" );
 
@@ -45,16 +46,17 @@ class ProductManagerTest {
     }
 
     @Test
-    void searchBy(String text) {
+    void shouldSearchBy() {
+        String textForSearch = "Java";
 
 
         manager.add(java3);
-        manager.add(java5);
+        manager.add(many);
 
-        manager.searchBy("Java");
+        manager.searchBy(textForSearch);
 
-        Product[] expected = new Product[]{java3, java5};
-        Product[] actual = manager.getAll();
+        Product[] expected = new Product[]{java3, };
+        Product[] actual = manager.searchBy(textForSearch);
         assertArrayEquals(expected, actual);
 
 
